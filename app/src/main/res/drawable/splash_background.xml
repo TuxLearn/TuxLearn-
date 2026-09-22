@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background color matching TuxLearn branding -->
+    <item android:drawable="@drawable/ic_launcher_background" />
+
+    <!-- Centered TuxLearn logo icon -->
+    <item
+        android:width="120dp"
+        android:height="120dp"
+        android:gravity="center"
+        android:drawable="@drawable/ic_tuxlearn_logo" />
+</layer-list>

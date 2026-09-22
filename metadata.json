@@ -1,0 +1,6 @@
+{
+  "name": "TuxLearn",
+  "description": "Personal study assistant with smart reminders, study planner with voice entry, falling behind detector with recovery plan, revision flashcards, exam readiness, notes, timetable, marks calculator, and AI question solver.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

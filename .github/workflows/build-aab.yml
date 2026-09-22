@@ -1,0 +1,43 @@
+name: Build Release AAB
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build Android App Bundle (com.tuxlearn.studyassistant)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Build Release Bundle (AAB)
+        run: ./gradlew :app:bundleRelease --stacktrace
+
+      - name: Verify Bundle File
+        run: |
+          echo "Verifying generated bundle:"
+          ls -lh app/build/outputs/bundle/release/
+
+      - name: Upload Release AAB Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tuxlearn-release-aab
+          path: app/build/outputs/bundle/release/*.aab
+          retention-days: 14
